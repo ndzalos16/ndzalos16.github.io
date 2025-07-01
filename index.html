@@ -17,7 +17,7 @@
             background-color: #fce4ec; /* Light pink background */
             color: #333; /* Darker text for better readability */
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll from overflowing content */
+            overflow-x: hidden; /* Crucial: Prevent horizontal scroll from overflowing content */
         }
         .font-playfair {
             font-family: 'Playfair Display', serif;
@@ -102,6 +102,13 @@
         .mobile-menu.active {
             transform: translateX(0); /* Slide in */
         }
+
+        /* Explicitly hide desktop nav on small screens to prevent overflow */
+        @media (max-width: 767px) { /* Tailwind's md breakpoint is 768px */
+            .desktop-nav-links {
+                display: none !important; /* Use !important to override potential conflicts */
+            }
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -112,7 +119,7 @@
             <a href="#home" class="font-playfair text-3xl font-bold text-rose-800 hover:text-rose-900 transition duration-300">vixxy extraaa</a>
         </div>
         <!-- Desktop Navigation -->
-        <ul class="hidden md:flex space-x-6">
+        <ul class="desktop-nav-links hidden md:flex space-x-6">
             <li><a href="#home" class="text-gray-700 hover:text-rose-800 text-lg font-medium transition duration-300">Home</a></li>
             <li><a href="#rings" class="text-gray-700 hover:text-rose-800 text-lg font-medium transition duration-300">Rings</a></li>
             <li><a href="#earrings" class="text-gray-700 hover:text-rose-800 text-lg font-medium transition duration-300">Earrings</a></li>
